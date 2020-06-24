@@ -1,0 +1,86 @@
+<mat-toolbar color="primary">
+    <div style="text-align: center;color: whitesmoke; font-size: larger;">
+        <span>Comunev - SignUp</span> 
+    </div>
+</mat-toolbar>
+
+<mat-vertical-stepper linear #stepper>
+    <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Fill out your name</ng-template>
+        <mat-form-field appearance="outline">
+          <mat-label> First Name</mat-label>
+          <input matInput formControlName="firstCtrl" placeholder="First name" required>
+        </mat-form-field>
+
+            &nbsp;
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="secondCtrl" placeholder="Last name" required>
+          </mat-form-field>
+        <div>
+          <button mat-button matStepperNext [disabled]="firstFormGroup.invalid">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Choose a Username & Password</ng-template>
+          <mat-form-field appearance="outline">
+            <mat-label> Username</mat-label>
+            <input matInput formControlName="firstCtrl" placeholder="Username" required>
+          </mat-form-field>
+  
+              &nbsp;
+          
+          <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input matInput formControlName="secondCtrl" placeholder="Password" type="password" required>
+            </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext [disabled]="secondFormGroup.invalid">Next</button>
+          </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup" [editable]="isEditable">
+        <form [formGroup]="thirdFormGroup">
+          <ng-template matStepLabel>When did you say 'Hello World' ;)</ng-template>
+          <mat-form-field appearance="outline">
+            <mat-label> Date of Birth</mat-label>
+            <input matInput formControlName="firstCtrl" placeholder="DOB" type="date" required>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="fourthFormGroup" [editable]="isEditable">
+        <form [formGroup]="fourthFormGroup">
+          <ng-template matStepLabel>And, where do you stay</ng-template>
+          <mat-form-field appearance="fill"
+                [hideRequiredMarker]="hideRequiredControl.value"
+                [floatLabel]="floatLabelControl.value">
+            <mat-select formControlName="firstCtrl" required>
+                <mat-option value="option">Others</mat-option>
+                <mat-option value="option">India</mat-option>
+            </mat-select>
+            
+         </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done. Thanks for Signing Up with Comunev</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
